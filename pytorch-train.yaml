@@ -1,0 +1,34 @@
+model_definition:
+  name: pytorhc-mnist-showtest1
+  author:
+    name: DL Developer
+    email: "seelam@nyu.edu"
+  description: Simple MNIST model implemented in Pytorch
+  framework:
+    name: pytorch
+    version: "0.4"
+    runtimes: 
+      name: python
+      version: "3.6"
+  execution:
+    command: python3 main.py --epochs 1 --data-dir $DATA_DIR --result-dir $RESULT_DIR
+    compute_configuration:
+      name: k80
+training_data_reference:
+  name: training_data_reference_name
+  connection:
+    endpoint_url: "s3.us-east.objectstorage.service.networklayer.com"
+    access_key_id: "<yourid>"
+    secret_access_key: "<yourkey>"
+  source:
+    bucket: <input-bucket-name>
+  type: s3
+training_results_reference:
+  name: training_results_reference_name
+  connection:
+    endpoint_url: "s3.us-east.objectstorage.service.networklayer.com"
+    access_key_id: "<yourid>"
+    secret_access_key: "<yourkey>"
+  target:
+    bucket: <output-bucket-name>
+  type: s3
